@@ -1,0 +1,32 @@
+{
+  "info": {
+    "name": "Healthcare Appointment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        { "name": "Register Patient", "request": { "method": "POST", "header": [], "url": "{{baseUrl}}/api/auth/register", "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Demo Patient\",\n  \"email\": \"patient1@healthcare.com\",\n  \"phone\": \"9876543210\",\n  \"password\": \"Patient@123\",\n  \"confirmPassword\": \"Patient@123\",\n  \"role\": \"PATIENT\"\n}", "options": { "raw": { "language": "json" } } } }
+      ]
+    },
+    {
+      "name": "Doctors",
+      "item": [
+        { "name": "List Doctors", "request": { "method": "GET", "url": "{{baseUrl}}/api/doctors" } },
+        { "name": "Doctor Details", "request": { "method": "GET", "url": "{{baseUrl}}/api/doctors/1" } }
+      ]
+    },
+    {
+      "name": "AI",
+      "item": [
+        { "name": "Recommend Doctors", "request": { "method": "GET", "url": "{{baseUrl}}/api/ai/recommend-doctors?specialty=Cardiology&date=2026-10-20&time=10:00&maxFee=1000" } },
+        { "name": "No-show Prediction", "request": { "method": "GET", "url": "{{baseUrl}}/api/ai/no-show-prediction/1" } }
+      ]
+    }
+  ]
+}
